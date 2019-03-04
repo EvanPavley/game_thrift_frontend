@@ -4,7 +4,7 @@ import './GameCard'
 class HomePage extends Component {
   render() {
     return (
-      null
+      <h1>HOME PAGE</h1>
     );
   }
 }

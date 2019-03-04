@@ -4,7 +4,7 @@ import './GameCard'
 class NewGameForm extends Component {
   render() {
     return (
-      null
+      <h1>NEW GAME FORM</h1>
     );
   }
 }

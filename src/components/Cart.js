@@ -4,7 +4,7 @@ import './GameCard'
 class Cart extends Component {
   render() {
     return (
-      null
+      <h1>CART</h1>
     );
   }
 }

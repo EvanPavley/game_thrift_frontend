@@ -4,7 +4,7 @@ import './GameCard'
 class SearchPage extends Component {
   render() {
     return (
-      null
+      <h1>SEARCH PAGE</h1>
     );
   }
 }
