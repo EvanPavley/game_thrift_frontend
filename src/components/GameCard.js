@@ -14,6 +14,7 @@ class GameCard extends Component {
             <p>Date Posted: {this.props.game.posted_date}</p>
             <p>Price: ${this.props.game.price}</p>
             <p>Console: {this.props.game.console}</p>
+            <button>add to cart</button>
           </div>
           <img className="game-card-image"
             src={this.props.game.image}/>
