@@ -1,0 +1,17 @@
+.ngf-container{
+  text-align: center;
+  justify-content: space-around;
+  font-size: 30px;
+}
+.ngf-input{
+  font-size: 25px;
+}
+.ngf-submit{
+  -webkit-appearance: none;
+  padding: 10px;
+  margin: 10px;
+  font-size: 20px;
+}
+.ngf-submit:hover {
+  background-color: cyan;
+}
