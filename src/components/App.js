@@ -13,12 +13,26 @@ class App extends Component {
     super(props)
     this.state = {
       currentPage: 'HomePage',
+      ogGames: [],
+      games: [],
+      selectedGames: [],
     }
   }
 
   handelPage = (page) => {
     this.setState({ currentPage: page });
   }
+
+  componentDidMount(){
+    const url = 'http://192.168.3.58:3000/api/v1/games'
+    fetch(url)
+    .then(resp => resp.json())
+    .then(data => this.setState({
+      ogGames: data,
+      games: data,
+    }))
+  }
+
 
   render() {
     return (
@@ -28,6 +42,7 @@ class App extends Component {
         <Route
           path="/HomePage"
           component={() => <HomePage
+            games= {this.state.games}
           />}
         />
         <Route

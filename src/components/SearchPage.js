@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './GameCard'
+// import './GameCard'
 
 class SearchPage extends Component {
   render() {
