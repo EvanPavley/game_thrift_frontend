@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import '../css/GameCard.css';
 
 class GameCard extends Component {
-
-  render(){
+  render() {
     return (
       <div>
-        <div className="game-card">
-          <div className="description-container">
+        <div className='game-card'>
+          <div className='description-container'>
             <h2>{this.props.game.name}</h2>
             <p>Description: {this.props.game.description}</p>
             <p>Date Released: {this.props.game.release_date}</p>
@@ -16,8 +15,7 @@ class GameCard extends Component {
             <p>Console: {this.props.game.console}</p>
             <button>add to cart</button>
           </div>
-          <img className="game-card-image"
-            src={this.props.game.image}/>
+          <img className='game-card-image' src={this.props.game.image} />
         </div>
       </div>
     );
