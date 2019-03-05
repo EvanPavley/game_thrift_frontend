@@ -12,10 +12,12 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      currentPage: 'HomePage',
       ogGames: [],
       games: [],
       selectedGames: [],
+      cart: [],
+      total: 0,
+      cartCount: 0,
     }
   }
 
@@ -33,36 +35,76 @@ class App extends Component {
     }))
   }
 
+  addToCart = (gameid) => {
+    let foundGame = this.state.ogGames.find(game => game.id === gameid)
+    let price = foundGame.price
+    this.setState({
+      cart: [foundGame, ...this.state.cart],
+      total: this.state.total + price,
+      cartCount: this.state.cartCount + 1,
+    })
+  }
+
+  removeFromCart = (gameid) => {
+    let foundGame = this.state.ogGames.find(game => game.id === gameid)
+    let price = foundGame.price
+    let updatedCart = this.state.cart.filter(game => {
+      if (game !== foundGame){
+        return game
+      }
+    })
+    this.setState({
+      cart: updatedCart,
+      total: this.state.total - price,
+      cartCount: this.state.cartCount - 1,
+    })
+  }
+
+  checkout = () => {
+    this.setState({
+      cart: [],
+      total: 0,
+      cartCount: 0,
+    })
+  }
+
 
   render() {
     return (
       <div>
         <h2>GAME THRIFT</h2>
-        <NavBar changePage={this.handlePageChange} />
+        <NavBar cartCount={this.state.cartCount}/>
         <Route
           path="/HomePage"
-          component={() => <HomePage
+          render={() => <HomePage
             games= {this.state.games}
+            addToCart= {this.addToCart}
+            isCart= {false}
           />}
         />
         <Route
           path="/Cart"
-          component={() => <Cart
+          render={() => <Cart
+            cart= {this.state.cart}
+            removeFromCart= {this.removeFromCart}
+            isCart= {true}
+            total= {this.state.total}
+            checkout= {this.checkout}
           />}
         />
         <Route
           path="/SearchPage"
-          component={() => <SearchPage
+          render={() => <SearchPage
           />}
         />
         <Route
           path="/Login"
-          component={() => <Login
+          render={() => <Login
           />}
         />
         <Route
           path="/NewGameForm"
-          component={() => <NewGameForm
+          render={() => <NewGameForm
           />}
         />
       </div>

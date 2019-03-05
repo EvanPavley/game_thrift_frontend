@@ -3,11 +3,13 @@ import GameCard from'./GameCard'
 
 class HomePage extends Component {
   getGames = () => {
-    return this.props.games.map(game => <GameCard game={game}/>)
+    return this.props.games.map(game => <GameCard
+      game={game}
+      handleCart= {this.props.addToCart}
+      isCart= {this.props.isCart}/>)
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <h1>HOME PAGE</h1>
