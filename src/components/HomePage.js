@@ -13,10 +13,12 @@ class HomePage extends Component {
     ));
   };
 
+
+
   render() {
     return (
       <div>
-        <h1>HOME PAGE</h1>
+        <h1>Featured Items</h1>
         <div>
           {this.props.games.length !== 0 ? (
             this.getGames()

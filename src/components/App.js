@@ -28,7 +28,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const url = 'http://localhost:3000/api/v1/games';
+    const url = 'http://192.168.3.58:3000/api/v1/games';
     fetch(url)
       .then(resp => resp.json())
       .then(data =>
@@ -92,7 +92,7 @@ class App extends Component {
       let games = this.state.games.filter(g => g.console === 'PlayStation');
       this.setState({ searchGames: games });
     }
-    if (e.target.name === 'ng4') {
+    if (e.target.name === 'n64') {
       let games = this.state.games.filter(g => g.console === 'Nintendo 64');
       this.setState({ searchGames: games });
     }
@@ -117,7 +117,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h2>GAME THRIFT</h2>
         <NavBar cartCount={this.state.cartCount} />
         <Route
           path='/HomePage'
@@ -153,6 +152,7 @@ class App extends Component {
               handleSearch={this.handleSearch}
               handleSubmit={this.handleSubmit}
               handleConsoleFilter={this.handleConsoleFilter}
+              addToCart={this.addToCart}
             />
           )}
         />

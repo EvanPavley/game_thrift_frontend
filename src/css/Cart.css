@@ -1,0 +1,34 @@
+.overall-cart-container{
+  flex-wrap: nowrap;
+}
+
+.cart-container{
+  border: 2px dashed black;
+  margin-left: 0px;
+  margin-right: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 30px;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+.cart-container button{
+  -webkit-appearance: none;
+  padding: 10px;
+  margin: 20px;
+  font-size: 23px;
+}
+.cart-container button:hover {
+  background-color: cyan;
+}
+
+.prices{
+  text-align: right;
+}
+
+#final-price{
+  font-weight: bold;
+  font-size: 28px;
+}

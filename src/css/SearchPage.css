@@ -1,0 +1,30 @@
+#overall-search-container{
+  flex-wrap: nowrap;
+}
+
+#search-container{
+  border: 2px dashed black;
+  margin-left: 50px;
+  margin-right: 0px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 30px;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#search-container input{
+  font-size: 20px;
+}
+
+#search-container button{
+  -webkit-appearance: none;
+  padding: 10px;
+  margin: 20px;
+  font-size: 23px;
+}
+#search-container button:hover {
+  background-color: cyan;
+}
