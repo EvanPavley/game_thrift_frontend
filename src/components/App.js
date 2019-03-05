@@ -9,7 +9,7 @@ import Login from './Login';
 import NewGameForm from './NewGameForm';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
-import GameShowCard from './GameShowCard';
+import GameShowContainer from './GameShowContainer';
 
 class App extends Component {
   constructor(props) {
@@ -218,7 +218,11 @@ class App extends Component {
               g => g.id == props.match.params.id
             );
             return game ? (
-              <GameShowCard {...props} games={this.state.games} game={game} />
+              <GameShowContainer
+                {...props}
+                games={this.state.games}
+                game={game}
+              />
             ) : (
               <h1>Loading...</h1>
             );
