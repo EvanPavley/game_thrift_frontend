@@ -9,8 +9,8 @@ class NewGameForm extends Component {
     image: '',
     console: '',
     description: '',
-    releasedDate: '',
-  }
+    releasedDate: ''
+  };
 
   handleChange = e => {
     const target = e.target;
@@ -18,14 +18,14 @@ class NewGameForm extends Component {
     const name = target.name;
     this.setState({
       [name]: value
-      })
-  }
+    });
+  };
 
   handleSubmit = e => {
-    e.preventDefault()
+    e.preventDefault();
     console.log(this.state);
     // this.sendFormDataSomewhere(this.state)
-  }
+  };
 
   render() {
     return (
@@ -34,62 +34,65 @@ class NewGameForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>Is Game?:</label>
           <input
-            name= 'isGame'
+            name='isGame'
             value={this.state.isGame}
             onChange={this.handleChange}
-            type="checkbox"
+            type='checkbox'
             checked={this.state.isGame}
             className='ngf-input'
-            /><br/>
+          />
+          <br />
           <label>Name:</label>
           <input
-            name= 'name'
+            name='name'
             value={this.state.name}
             onChange={this.handleChange}
             className='ngf-input'
-            /><br/>
+          />
+          <br />
           <label>Price:</label>
           <input
-            name= 'price'
+            name='price'
             value={this.state.price}
             onChange={this.handleChange}
             className='ngf-input'
-            /><br/>
+          />
+          <br />
           <label>Image:</label>
           <input
-            name= 'image'
+            name='image'
             value={this.state.image}
             onChange={this.handleChange}
             className='ngf-input'
-            /><br/>
+          />
+          <br />
           <label>Console:</label>
           <input
-            name= 'console'
+            name='console'
             value={this.state.console}
             onChange={this.handleChange}
             className='ngf-input'
-            /><br/>
+          />
+          <br />
           <label>Description:</label>
           <input
             type='textarea'
-            name= 'description'
+            name='description'
             value={this.state.description}
             onChange={this.handleChange}
             className='ngf-input'
-            /><br/>
+          />
+          <br />
           <label>released date:</label>
           <input
-            type="date"
-            name= 'releasedDate'
+            type='date'
+            name='releasedDate'
             value={this.state.releasedDate}
             onChange={this.handleChange}
             className='ngf-input'
-            /><br/>
-          <input
-            type="submit"
-            value="submit"
-            className='ngf-submit'
-            />
+          />
+          <br />
+          <input type='submit' value='submit' className='ngf-submit' />
         </form>
       </div>
     );
