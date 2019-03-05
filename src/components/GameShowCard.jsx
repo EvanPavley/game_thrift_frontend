@@ -3,7 +3,7 @@ import '../css/GameCard.css';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 
-class GameCard extends Component {
+class GameShowCard extends Component {
   handleClick = () => {
     this.props.handleCart(this.props.game.id);
   };
@@ -21,12 +21,7 @@ class GameCard extends Component {
 
     return (
       <div>
-        <div
-          className='game-card'
-          onClick={() =>
-            this.props.history.push(`/games/${this.props.game.id}`)
-          }
-        >
+        <div className='game-card'>
           <div className='image-container'>
             <img className='game-card-image' src={this.props.game.image} />
           </div>
@@ -36,6 +31,7 @@ class GameCard extends Component {
               <p>Console: {this.props.game.console}</p>
               <p>Date Posted: {postedDate}</p>
               <p>Date Released: {releaseDate}</p>
+              <p>Description: {this.props.game.description}</p>
             </div>
           </div>
           <div className='price-container'>
@@ -45,10 +41,11 @@ class GameCard extends Component {
             ) : (
               <button onClick={this.handleClick}>add to cart</button>
             )}
+            <button onClick={() => this.props.history.goBack()}>Back</button>
           </div>
         </div>
       </div>
     );
   }
 }
-export default withRouter(GameCard);
+export default withRouter(GameShowCard);
