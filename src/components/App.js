@@ -7,6 +7,9 @@ import SearchPage from './SearchPage';
 import Cart from './Cart';
 import Login from './Login';
 import NewGameForm from './NewGameForm';
+import moment from 'moment';
+import { withRouter } from 'react-router-dom';
+import GameShow from './GameShow';
 
 class App extends Component {
   constructor(props) {
@@ -19,13 +22,15 @@ class App extends Component {
       total: 0,
       cartCount: 0,
       searchGames: [],
-      searchValue: ''
+      searchValue: '',
+      name: '',
+      price: '',
+      image: '',
+      console: '',
+      description: '',
+      release_date: ''
     };
   }
-
-  handelPage = page => {
-    this.setState({ currentPage: page });
-  };
 
   componentDidMount() {
     const url = 'http://localhost:3000/api/v1/games';
@@ -114,6 +119,43 @@ class App extends Component {
     }
   };
 
+  handleAddGameChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleAddGameSubmit = e => {
+    e.preventDefault();
+    console.log('form', this.state);
+
+    fetch('http://localhost:3000/api/v1/games', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        name: this.state.name,
+        price: this.state.price,
+        image: this.state.image,
+        console: this.state.console,
+        posted_date: moment().unix(),
+        description: this.state.description,
+        release_date: new Date(this.state.release_date).getTime() / 1000,
+        seller_id: 11
+      })
+    })
+      .then(r => r.json())
+      .then(game =>
+        this.setState({
+          games: [...this.state.games, game]
+        })
+      );
+
+    this.props.history.push('/HomePage');
+  };
+
   render() {
     return (
       <div>
@@ -141,9 +183,7 @@ class App extends Component {
             />
           )}
         />
-
         <Route path='/Login' render={() => <Login />} />
-
         <Route
           path='/SearchPage'
           render={() => (
@@ -156,10 +196,37 @@ class App extends Component {
             />
           )}
         />
-        <Route path='/NewGameForm' component={() => <NewGameForm />} />
+        <Route
+          path='/NewGameForm'
+          render={() => (
+            <NewGameForm
+              handleSubmit={this.handleAddGameSubmit}
+              handleChange={this.handleAddGameChange}
+              name={this.state.name}
+              price={this.state.price}
+              image={this.state.image}
+              console={this.state.console}
+              description={this.state.description}
+              release_date={this.state.release_date}
+            />
+          )}
+        />
+        <Route
+          path='/games/:id'
+          render={props => {
+            let game = this.state.games.find(
+              g => g.id == props.match.params.id
+            );
+            return game ? (
+              <GameShow {...props} games={this.state.games} game={game} />
+            ) : (
+              <h1>Loading...</h1>
+            );
+          }}
+        />
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
