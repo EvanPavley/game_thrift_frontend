@@ -52,6 +52,33 @@ class App extends Component {
     this.setState({ searchGames: searchedGames });
   };
 
+  handleConsoleFilter = e => {
+    if (e.target.name === 'ps1') {
+      let games = this.state.games.filter(g => g.console === 'PlayStation');
+      this.setState({ searchGames: games });
+    }
+    if (e.target.name === 'ng4') {
+      let games = this.state.games.filter(g => g.console === 'Nintendo 64');
+      this.setState({ searchGames: games });
+    }
+    if (e.target.name === 'snes') {
+      let games = this.state.games.filter(
+        g => g.console === 'Super Nintendo Entertainment System (SNES)'
+      );
+      this.setState({ searchGames: games });
+    }
+    if (e.target.name === 'dos') {
+      let games = this.state.games.filter(g => g.console === 'PC DOS');
+      this.setState({ searchGames: games });
+    }
+    if (e.target.name === 'sega') {
+      let games = this.state.games.filter(
+        g => g.console === 'Sega Mega Drive/Genesis'
+      );
+      this.setState({ searchGames: games });
+    }
+  };
+
   render() {
     return (
       <div>
@@ -71,6 +98,7 @@ class App extends Component {
               searchValue={this.state.searchValue}
               handleSearch={this.handleSearch}
               handleSubmit={this.handleSubmit}
+              handleConsoleFilter={this.handleConsoleFilter}
             />
           )}
         />
