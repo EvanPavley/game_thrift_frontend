@@ -47,9 +47,9 @@ class Cart extends Component {
               {this.displayPrices()}
               <p id='final-price'>${this.props.total}</p>
             </div>
+            <button class='cart-button' onClick={this.props.checkout}>Empty Cart</button>
+            <button class='cart-button' id='checkout-btn' onClick={this.props.checkout}>Checkout</button>
           </div>
-          <button class='cart-button' onClick={this.props.checkout}>Empty Cart</button>
-          <button class='cart-button' id='checkout-btn' onClick={this.props.checkout}>Checkout</button>
         </div>
       </div>
     );

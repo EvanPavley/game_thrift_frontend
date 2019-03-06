@@ -5,6 +5,8 @@
 }
 
 .search-container{
+  position: -webkit-sticky;
+  position: sticky;
   text-align: center;
   border-radius: 6px;
   border: 7px solid #393b78;

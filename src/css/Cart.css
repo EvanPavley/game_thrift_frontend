@@ -25,7 +25,8 @@
   border-radius: 70px;
   color: white;
   padding: 10px;
-  margin: 20px;
+  margin-left: 20px;
+  margin: 30px;
   font-size: 20px;
 }
 .cart-button:hover{
