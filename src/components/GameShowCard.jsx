@@ -32,7 +32,9 @@ class GameShowCard extends Component {
               <p>Date Released: {releaseDate}</p>
               <hr />
               <p>Posted: {postedDate}</p>
-              <p>Seller: {this.props.game.seller.email}</p>
+              {this.props.game.seller ? (
+                <p>Seller: {this.props.game.seller.email}</p>
+              ) : null}
               <hr />
               <p>
                 Description: <br />

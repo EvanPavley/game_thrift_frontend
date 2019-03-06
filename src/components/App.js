@@ -10,10 +10,12 @@ import NewGameForm from './NewGameForm';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 import GameShowContainer from './GameShowContainer';
+import UserShowContainer from './UserShowContainer';
 
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       ogGames: [],
       games: [],
@@ -28,7 +30,9 @@ class App extends Component {
       image: '',
       console: '',
       description: '',
-      release_date: ''
+      release_date: '',
+      ogUsers: [],
+      users: []
     };
   }
 
@@ -42,6 +46,18 @@ class App extends Component {
           games: data,
           searchGames: data
         })
+      );
+
+    fetch('http://localhost:3000/api/v1/users')
+      .then(r => r.json())
+      .then(users =>
+        this.setState(
+          {
+            ogUsers: users,
+            users: users
+          },
+          () => console.log(this.state)
+        )
       );
   }
 
@@ -157,6 +173,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.props.users);
     return (
       <div>
         <NavBar cartCount={this.state.cartCount} />
@@ -222,6 +239,25 @@ class App extends Component {
                 {...props}
                 games={this.state.games}
                 game={game}
+                addToCart={this.addToCart}
+              />
+            ) : (
+              <h1>Loading...</h1>
+            );
+          }}
+        />
+        <Route
+          path='/users/:id'
+          render={props => {
+            let user = this.state.users.find(
+              u => u.id == props.match.params.id
+            );
+
+            return user ? (
+              <UserShowContainer
+                {...props}
+                user={user}
+                addToCart={this.addToCart}
               />
             ) : (
               <h1>Loading...</h1>

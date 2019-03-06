@@ -19,14 +19,15 @@ class GameCard extends Component {
 
     return (
       <div>
-        <div
-          className='game-card'
-          onClick={() =>
-            this.props.history.push(`/games/${this.props.game.id}`)
-          }
-        >
+        <div className='game-card'>
           <div className='image-container'>
-            <img className='game-card-image' src={this.props.game.image} />
+            <img
+              className='game-card-image'
+              src={this.props.game.image}
+              onClick={() =>
+                this.props.history.push(`/games/${this.props.game.id}`)
+              }
+            />
           </div>
           <div className='description-container'>
             <h2>{this.props.game.name}</h2>
@@ -35,7 +36,17 @@ class GameCard extends Component {
               <p>Released: {releaseDate}</p>
               <hr />
               <p>Posted: {postedDate}</p>
-              <p>Seller: {this.props.game.seller.email}</p>
+              {this.props.game.seller ? (
+                <p
+                  onClick={() =>
+                    this.props.history.push(
+                      `/users/${this.props.game.seller.id}`
+                    )
+                  }
+                >
+                  Seller: {this.props.game.seller.email}
+                </p>
+              ) : null}
             </div>
           </div>
           <div className='price-container'>

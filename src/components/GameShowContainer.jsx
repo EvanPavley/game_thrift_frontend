@@ -7,7 +7,7 @@ function GameShowContainer(props) {
   // }
   return (
     <div>
-      <GameShowCard game={props.game} />
+      <GameShowCard game={props.game} handleCart={props.addToCart} />
       {/* {suggestedGames()} */}
     </div>
   );
