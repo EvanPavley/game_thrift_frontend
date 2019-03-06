@@ -35,7 +35,8 @@ class App extends Component {
       users: [],
       username: '',
       email: '',
-      password: ''
+      password: '',
+      loggedInUser: null
     };
   }
 
@@ -87,11 +88,15 @@ class App extends Component {
   };
 
   checkout = () => {
-    this.setState({
-      cart: [],
-      total: 0,
-      cartCount: 0
-    });
+    if (this.state.loggedInUser) {
+      this.setState({
+        cart: [],
+        total: 0,
+        cartCount: 0
+      });
+    } else {
+      alert('Please log in to checkout');
+    }
   };
 
   handleSearch = e => {
@@ -145,6 +150,14 @@ class App extends Component {
     });
   };
 
+  welcomeUser = () => {
+    if (this.state.users.includes(this.state.loggedInUser)) {
+      alert(`Welcome back, ${this.state.loggedInUser.username}`);
+    } else {
+      alert(`Thanks for signing up, ${this.state.loggedInUser.username}`);
+    }
+  };
+
   handleLoginSubmit = e => {
     console.log(this.state);
     e.preventDefault();
@@ -162,10 +175,16 @@ class App extends Component {
     }) // end of fetch
       .then(r => r.json())
       .then(user =>
-        this.setState({
-          users: [...this.state.users, user]
-        })
+        this.setState(
+          {
+            users: [...this.state.users, user],
+            loggedInUser: user
+          },
+          this.welcomeUser
+        )
       );
+
+    this.props.history.push('/HomePage');
   };
 
   handleAddGameSubmit = e => {
@@ -185,13 +204,19 @@ class App extends Component {
         posted_date: moment().unix(),
         description: this.state.description,
         release_date: new Date(this.state.release_date).getTime() / 1000,
-        seller_id: 11
+        seller_id: this.state.loggedInUser.id
       })
     })
       .then(r => r.json())
       .then(game =>
         this.setState({
-          games: [...this.state.games, game]
+          games: [...this.state.games, game],
+          name: '',
+          price: '',
+          image: '',
+          console: '',
+          description: '',
+          release_date: ''
         })
       );
 
@@ -221,6 +246,7 @@ class App extends Component {
               isCart={true}
               total={this.state.total}
               checkout={this.checkout}
+              loggedInUser={this.state.loggedInUser}
             />
           )}
         />
@@ -233,6 +259,7 @@ class App extends Component {
               email={this.state.email}
               handleChange={this.handleLoginChange}
               handleSubmit={this.handleLoginSubmit}
+              loggedInUser={this.state.loggedInUser}
             />
           )}
         />
@@ -261,6 +288,7 @@ class App extends Component {
               console={this.state.console}
               description={this.state.description}
               release_date={this.state.release_date}
+              loggedInUser={this.state.loggedInUser}
             />
           )}
         />
