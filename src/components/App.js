@@ -208,17 +208,24 @@ class App extends Component {
       })
     })
       .then(r => r.json())
-      .then(game =>
+      .then(game => {
+        let currentUser = this.state.users.find(
+          u => u.id == this.state.loggedInUser.id
+        );
+
+        currentUser.games.push(game);
+
         this.setState({
           games: [...this.state.games, game],
+          users: [...this.state.users, currentUser],
           name: '',
           price: '',
           image: '',
           console: '',
           description: '',
           release_date: ''
-        })
-      );
+        });
+      });
 
     this.props.history.push('/HomePage');
   };
