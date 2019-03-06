@@ -3,9 +3,14 @@ import GameCard from './GameCard';
 import '../css/Cart.css';
 
 class Cart extends Component {
+  state = {
+    cartMsg: 'Your cart is empty...'
+  };
+
   getGames = () => {
     return this.props.cart.map(game => (
       <GameCard
+        key={game.id}
         game={game}
         isCart={this.props.isCart}
         handleCart={this.props.removeFromCart}
@@ -34,13 +39,20 @@ class Cart extends Component {
     });
   };
 
+  checkoutCart = () => {
+    this.props.checkout();
+    this.setState({
+      cartMsg: 'Thank you for your purchase!'
+    });
+  };
+
   render() {
     return (
       <div className='row overall-cart-container'>
         {this.props.cart.length !== 0 ? (
           <div className='col'>{this.getGames()}</div>
         ) : (
-          <h1 className='col'>Thank you for your purchase!</h1>
+          <h1 className='col'>{this.state.cartMsg}</h1>
         )}
         <div className='col col-lg-3 cart-container'>
           <h2>Summary</h2>
@@ -54,13 +66,13 @@ class Cart extends Component {
               {this.displayPrices()}
               <p id='final-price'>${this.props.total}</p>
             </div>
-            <button class='cart-button' onClick={this.props.checkout}>
+            <button className='cart-button' onClick={this.props.checkout}>
               Empty Cart
             </button>
             <button
-              class='cart-button'
+              className='cart-button'
               id='checkout-btn'
-              onClick={this.props.checkout}
+              onClick={this.checkoutCart}
             >
               Checkout
             </button>

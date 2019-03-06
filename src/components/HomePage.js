@@ -6,6 +6,7 @@ class HomePage extends Component {
   getGames = () => {
     return this.props.games.map(game => (
       <GameCard
+        cart={this.props.cart}
         game={game}
         handleCart={this.props.addToCart}
         isCart={this.props.isCart}
@@ -14,17 +15,15 @@ class HomePage extends Component {
     ));
   };
 
-
-
   render() {
     return (
-      <div className="container homepage-container">
-        <h1 className="home-page-title">Feature Games</h1>
+      <div className='container homepage-container'>
+        <h1 className='home-page-title'>Featured Games</h1>
         <div>
           {this.props.games.length !== 0 ? (
             this.getGames()
           ) : (
-            <h3>No matches found</h3>
+            <h1>Loading...</h1>
           )}
         </div>
       </div>

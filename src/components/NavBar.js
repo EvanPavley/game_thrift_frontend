@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import '../css/NavBar.css';
 
 class NavBar extends Component {
@@ -12,7 +12,7 @@ class NavBar extends Component {
         </NavLink>
         <NavLink className='nav-item' id='ngf' to='/NewGameForm'>
           {' '}
-          Sell Game{' '}
+          Post Game{' '}
         </NavLink>
         <NavLink className='nav-item' id='homepage' to='/HomePage'>
           {' '}
@@ -24,7 +24,7 @@ class NavBar extends Component {
         </NavLink>
         <NavLink className='nav-item' id='search' to='/SearchPage'>
           {' '}
-          Search{' '}
+          Browse{' '}
         </NavLink>
       </div>
     );

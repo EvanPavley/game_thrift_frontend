@@ -5,14 +5,19 @@ import '../css/SearchPage.css';
 class SearchPage extends Component {
   renderGames = () => {
     return this.props.games.map(game => (
-      <GameCard key={game.id} game={game} handleCart={this.props.addToCart} />
+      <GameCard
+        key={game.id}
+        cart={this.props.cart}
+        game={game}
+        handleCart={this.props.addToCart}
+      />
     ));
   };
 
   render() {
     return (
-      <div class='row overall-search-container'>
-        <div class='col col-lg-3 search-container'>
+      <div className='row overall-search-container'>
+        <div className='col col-lg-3 search-container'>
           {/* filter by console, sort by price/name/ */}
           <form onSubmit={this.props.handleSubmit}>
             <label>Search Games:</label>
@@ -66,7 +71,7 @@ class SearchPage extends Component {
             </button>
           </div>
         </div>
-        <div class='col'>{this.renderGames()}</div>
+        <div className='col'>{this.renderGames()}</div>
       </div>
     );
   }

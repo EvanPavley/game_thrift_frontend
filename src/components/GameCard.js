@@ -9,10 +9,6 @@ class GameCard extends Component {
   };
 
   render() {
-    let releaseDate = moment
-      .unix(this.props.game.release_date)
-      .format('MMMM Do YYYY');
-
     let postedDate = moment
       .unix(this.props.game.posted_date)
       .format('MMMM Do YYYY');
@@ -24,6 +20,7 @@ class GameCard extends Component {
             <img
               className='game-card-image'
               src={this.props.game.image}
+              alt=''
               onClick={() =>
                 this.props.history.push(`/games/${this.props.game.id}`)
               }
@@ -54,7 +51,17 @@ class GameCard extends Component {
               <button onClick={this.handleClick}>remove</button>
             ) : (
               <div>
-                <button onClick={this.handleClick}>add to cart</button>
+                <button
+                  onClick={
+                    this.props.cart.includes(this.props.game)
+                      ? null
+                      : this.handleClick
+                  }
+                >
+                  {this.props.cart.includes(this.props.game)
+                    ? 'in your cart'
+                    : 'add to cart'}
+                </button>
                 <button id='wishlist'>wishlist</button>
               </div>
             )}

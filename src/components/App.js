@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import '../css/App.css';
 import NavBar from './NavBar';
 import HomePage from './HomePage';
@@ -12,6 +12,14 @@ import { withRouter } from 'react-router-dom';
 import GameShowContainer from './GameShowContainer';
 import UserShowContainer from './UserShowContainer';
 
+const featuredGamesNames = [
+  'Jurassic Park',
+  'Ghostbusters',
+  'Super Bomberman',
+  'Pokémon Stadium',
+  'GoldenEye 007'
+];
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +28,7 @@ class App extends Component {
       ogGames: [],
       games: [],
       selectedGames: [],
+      featuredGames: [],
       cart: [],
       total: 0,
       cartCount: 0,
@@ -40,16 +49,31 @@ class App extends Component {
     };
   }
 
+  featuredGames = () => {
+    return featuredGamesNames.map(name => {
+      return this.state.games.find(g => g.name === name);
+    });
+  };
+
   componentDidMount() {
     const url = 'http://localhost:3000/api/v1/games';
     fetch(url)
       .then(resp => resp.json())
       .then(data =>
-        this.setState({
-          ogGames: data,
-          games: data,
-          searchGames: data
-        })
+        this.setState(
+          {
+            ogGames: data,
+            games: data,
+            searchGames: data
+          },
+          () =>
+            this.setState(
+              {
+                featuredGames: this.featuredGames()
+              },
+              () => console.log('app', this.state)
+            )
+        )
       );
 
     fetch('http://localhost:3000/api/v1/users')
@@ -145,44 +169,61 @@ class App extends Component {
   };
 
   handleLoginChange = e => {
+    // if (e.target.name === 'username') {
+    //   if (this.checkExistingUser(e.target.value)) {
+    //     alert('That username is taken, please choose another.');
+    //   }
+    // }
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
-  welcomeUser = () => {
-    if (this.state.users.includes(this.state.loggedInUser)) {
-      alert(`Welcome back, ${this.state.loggedInUser.username}`);
-    } else {
-      alert(`Thanks for signing up, ${this.state.loggedInUser.username}`);
-    }
+  checkExistingUser = username => {
+    return this.state.users.find(u => u.username === username) ? true : false;
   };
 
   handleLoginSubmit = e => {
-    console.log(this.state);
     e.preventDefault();
-    fetch('http://localhost:3000/api/v1/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password,
-        email: this.state.email
-      })
-    }) // end of fetch
-      .then(r => r.json())
-      .then(user =>
-        this.setState(
-          {
-            users: [...this.state.users, user],
-            loggedInUser: user
-          },
-          this.welcomeUser
-        )
+
+    console.log(
+      this.state.username,
+      this.checkExistingUser(this.state.username)
+    );
+    if (this.checkExistingUser(this.state.username)) {
+      let existingUser = this.state.users.find(
+        u => u.username === this.state.username
       );
+      this.setState(
+        {
+          loggedInUser: existingUser
+        },
+        () => alert(`Welcome back, ${existingUser.username}`)
+      );
+    } else {
+      fetch('http://localhost:3000/api/v1/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          username: this.state.username,
+          password: this.state.password,
+          email: this.state.email
+        })
+      }) // end of fetch
+        .then(r => r.json())
+        .then(user => {
+          this.setState(
+            {
+              users: [...this.state.users, user],
+              loggedInUser: user
+            },
+            () => alert(`Welcome to GAME THRIFT, ${user.username}`)
+          );
+        });
+    }
 
     this.props.history.push('/HomePage');
   };
@@ -238,7 +279,8 @@ class App extends Component {
           path='/HomePage'
           render={() => (
             <HomePage
-              games={this.state.games}
+              cart={this.state.cart}
+              games={this.state.featuredGames}
               addToCart={this.addToCart}
               isCart={false}
             />
@@ -274,6 +316,7 @@ class App extends Component {
           path='/SearchPage'
           render={() => (
             <SearchPage
+              cart={this.state.cart}
               games={this.state.searchGames}
               searchValue={this.state.searchValue}
               handleSearch={this.handleSearch}
@@ -307,6 +350,7 @@ class App extends Component {
             );
             return game ? (
               <GameShowContainer
+                cart={this.state.cart}
                 {...props}
                 games={this.state.games}
                 game={game}
@@ -326,6 +370,7 @@ class App extends Component {
 
             return user ? (
               <UserShowContainer
+                cart={this.state.cart}
                 {...props}
                 user={user}
                 addToCart={this.addToCart}
