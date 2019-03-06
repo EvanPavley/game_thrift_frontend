@@ -17,8 +17,6 @@ class GameShowCard extends Component {
       .unix(this.props.game.posted_date)
       .format('MMMM Do YYYY');
 
-    console.log(moment().unix());
-
     return (
       <div>
         <div className='game-card'>
@@ -29,9 +27,17 @@ class GameShowCard extends Component {
             <h2>{this.props.game.name}</h2>
             <div className='description-sub-container'>
               <p>Console: {this.props.game.console}</p>
-              <p>Date Posted: {postedDate}</p>
               <p>Date Released: {releaseDate}</p>
-              <p>Description: {this.props.game.description}</p>
+              <hr />
+              <p>Posted: {postedDate}</p>
+              {this.props.game.seller ? (
+                <p>Seller: {this.props.game.seller.username}</p>
+              ) : null}
+              <hr />
+              <p>
+                Description: <br />
+                {this.props.game.description}
+              </p>
             </div>
           </div>
           <div className='price-container'>
@@ -41,7 +47,7 @@ class GameShowCard extends Component {
             ) : (
               <button onClick={this.handleClick}>add to cart</button>
             )}
-            <button onClick={() => this.props.history.goBack()}>Back</button>
+            <button onClick={() => this.props.history.goBack()}>back</button>
           </div>
         </div>
       </div>

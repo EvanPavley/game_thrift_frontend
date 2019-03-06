@@ -16,8 +16,18 @@ class Login extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
-    // this.sendFormDataSomewhere(this.state)
+    fetch('http://localhost:3000/api/v1/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password,
+        email: this.state.email
+      })
+    }); // end of fetch
   };
 
   render() {
@@ -31,6 +41,7 @@ class Login extends Component {
             value={this.state.username}
             onChange={this.handleChange}
             className='login-input'
+            required
           />
           <br />
           <label>Email:</label>
@@ -39,6 +50,7 @@ class Login extends Component {
             value={this.state.email}
             onChange={this.handleChange}
             className='login-input'
+            required
           />
           <br />
           <label>Password:</label>
@@ -48,9 +60,10 @@ class Login extends Component {
             onChange={this.handleChange}
             type='password'
             className='login-input'
+            required
           />
           <br />
-          <input type='submit' value='submit' className='login-submit' />
+          <input type='submit' value='login' className='login-submit' />
         </form>
       </div>
     );

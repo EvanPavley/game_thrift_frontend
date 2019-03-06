@@ -9,43 +9,7 @@ class NewGameForm extends Component {
     console: '',
     description: '',
     release_date: ''
-    // postedDate: ''
   };
-
-  // handleChange = e => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value
-  //   });
-  // };
-
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  //   console.log('form', this.state);
-
-  //   fetch('http://localhost:3000/api/v1/games', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Accept: 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       name: this.state.name,
-  //       price: this.state.price,
-  //       image: this.state.image,
-  //       console: this.state.console,
-  //       posted_date: moment().unix(),
-  //       description: this.state.description,
-  //       release_date: new Date(this.state.release_date).getTime() / 1000,
-  //       seller_id: 11
-  //     })
-  //   })
-  //     .then(r => r.json())
-  //     .then(game => this.setState({
-
-  //     }))
-
-  //   this.props.history.push('/HomePage');
-  // };
 
   render() {
     return (

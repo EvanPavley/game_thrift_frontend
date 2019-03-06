@@ -17,26 +17,35 @@ class GameCard extends Component {
       .unix(this.props.game.posted_date)
       .format('MMMM Do YYYY');
 
-    console.log(moment().unix());
-
     return (
       <div>
-        <div
-          className='game-card'
-          onClick={() =>
-            this.props.history.push(`/games/${this.props.game.id}`)
-          }
-        >
+        <div className='game-card'>
           <div className='image-container'>
-            <img className='game-card-image' src={this.props.game.image} />
+            <img
+              className='game-card-image'
+              src={this.props.game.image}
+              onClick={() =>
+                this.props.history.push(`/games/${this.props.game.id}`)
+              }
+            />
           </div>
           <div className='description-container'>
             <h2>{this.props.game.name}</h2>
-            <hr/>
+            <hr />
             <div className='description-sub-container'>
               <p>Console: {this.props.game.console}</p>
-              <p>Date Posted: {postedDate}</p>
-              <p>Date Released: {releaseDate}</p>
+              <p>Posted: {postedDate}</p>
+              {this.props.game.seller ? (
+                <p
+                  onClick={() =>
+                    this.props.history.push(
+                      `/users/${this.props.game.seller.id}`
+                    )
+                  }
+                >
+                  Seller: {this.props.game.seller.username}
+                </p>
+              ) : null}
             </div>
           </div>
           <div className='price-container'>

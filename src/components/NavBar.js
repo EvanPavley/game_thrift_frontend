@@ -4,14 +4,13 @@ import '../css/NavBar.css';
 
 class NavBar extends Component {
   render() {
-    // console.log('nav', this.props);
     return (
       <div className='nav-container'>
         <NavLink className='nav-item' to='/Login'>
           {' '}
           Login{' '}
         </NavLink>
-        <NavLink className='nav-item' id='ngf'to='/NewGameForm'>
+        <NavLink className='nav-item' id='ngf' to='/NewGameForm'>
           {' '}
           Sell Game{' '}
         </NavLink>

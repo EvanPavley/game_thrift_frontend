@@ -1,12 +1,16 @@
-.overall-search-container{
+.overall-search-container {
   flex-wrap: nowrap;
   margin-left: 80px;
   margin-right: 80px;
 }
 
-.search-container{
+.col-lg-3 {
   position: -webkit-sticky;
   position: sticky;
+  top: 5rem;
+}
+
+.search-container {
   text-align: center;
   border-radius: 6px;
   border: 7px solid #393b78;
@@ -23,14 +27,14 @@
   height: 940px;
 }
 
-.search-container input{
+.search-container input {
   font-size: 20px;
   padding-left: 10px;
   width: 330px;
   border: 5px solid #4b52ff;
 }
 
-.search-button{
+.search-button {
   -webkit-appearance: none;
   border: 5px solid #ffff00;
   background-color: #737219;
@@ -48,7 +52,7 @@
   background-color: #ffff00;
 }
 
-#n64{
+#n64 {
   border: 5px solid #18e3d3;
   background-color: #08544e;
   padding-right: 55px;
@@ -59,7 +63,7 @@
   background-color: #18e3d3;
 }
 
-#snes{
+#snes {
   border: 5px solid #ff5dc0;
   background-color: #722a56;
   padding-right: 35px;
@@ -70,7 +74,7 @@
   background-color: #ff5dc0;
 }
 
-#dos{
+#dos {
   border: 5px solid #4b52ff;
   background-color: #212463;
   padding-right: 83px;
