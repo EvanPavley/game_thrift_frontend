@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../css/GameCard.css';
 import moment from 'moment';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class GameCard extends Component {
   handleClick = () => {
@@ -31,18 +31,19 @@ class GameCard extends Component {
             <h2>{this.props.game.name}</h2>
             <hr />
             <div className='description-sub-container'>
-              <p>Console: {this.props.game.console}</p>
-              <p>Posted: {postedDate}</p>
+              <p>
+                <b>Console:</b> {this.props.game.console}
+              </p>
+              <p>
+                <b>Posted:</b> {postedDate}
+              </p>
               {this.props.game.seller ? (
-                <p
-                  onClick={() =>
-                    this.props.history.push(
-                      `/users/${this.props.game.seller.id}`
-                    )
-                  }
-                >
-                  Seller: {this.props.game.seller.username}
-                </p>
+                <Link to={`/users/${this.props.game.seller.id}`}>
+                  <b style={{ color: 'white' }}>Seller:</b>{' '}
+                  <span style={{ color: '#FF5DC0' }}>
+                    {this.props.game.seller.username}
+                  </span>
+                </Link>
               ) : null}
             </div>
           </div>

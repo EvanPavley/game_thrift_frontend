@@ -18,10 +18,14 @@ class NewGameForm extends Component {
           <h1>Please log in to post a game!</h1>
         ) : (
           <div className='new-game'>
-            <h1 id='ngf-title'>SELL A GAME</h1>
-            <form className='ngf-form'onSubmit={e => this.props.handleSubmit(e)}>
+            <h1 id='ngf-title'>POST A GAME</h1>
+            <form
+              className='ngf-form'
+              onSubmit={e => this.props.handleSubmit(e)}
+            >
               <br />
-              <label>Name:</label><br/>
+              <label>Name:</label>
+              <br />
               <input
                 name='name'
                 value={this.props.name}
@@ -30,7 +34,8 @@ class NewGameForm extends Component {
                 required
               />
               <br />
-              <label>Price:</label><br/>
+              <label>Price:</label>
+              <br />
               <input
                 name='price'
                 value={this.props.price}
@@ -39,7 +44,8 @@ class NewGameForm extends Component {
                 required
               />
               <br />
-              <label>Image:</label><br/>
+              <label>Image:</label>
+              <br />
               <input
                 name='image'
                 value={this.props.image}
@@ -48,7 +54,8 @@ class NewGameForm extends Component {
                 required
               />
               <br />
-              <label>Console:</label><br/>
+              <label>Console:</label>
+              <br />
               <input
                 name='console'
                 value={this.props.console}
@@ -57,7 +64,8 @@ class NewGameForm extends Component {
                 required
               />
               <br />
-              <label>Description:</label><br/>
+              <label>Description:</label>
+              <br />
               <textarea
                 id='des'
                 type='text'
@@ -68,7 +76,8 @@ class NewGameForm extends Component {
                 required
               />
               <br />
-              <label>Release Date:</label><br/>
+              <label>Release Date:</label>
+              <br />
               <input
                 id='date'
                 type='date'

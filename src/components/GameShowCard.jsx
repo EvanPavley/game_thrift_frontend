@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../css/GameShowCard.css';
 import moment from 'moment';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class GameShowCard extends Component {
   handleClick = () => {
@@ -35,9 +35,12 @@ class GameShowCard extends Component {
                 <b>Posted:</b> {postedDate}
               </p>
               {this.props.game.seller ? (
-                <p>
-                  <b>Seller:</b> {this.props.game.seller.username}
-                </p>
+                <Link to={`/users/${this.props.game.seller.id}`}>
+                  <b style={{ color: 'white' }}>Seller:</b>{' '}
+                  <span style={{ color: '#FF5DC0' }}>
+                    {this.props.game.seller.username}
+                  </span>
+                </Link>
               ) : null}
               <hr />
               <p>
