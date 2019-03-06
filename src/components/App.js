@@ -374,6 +374,7 @@ class App extends Component {
                 {...props}
                 user={user}
                 addToCart={this.addToCart}
+                isCart={false}
               />
             ) : (
               <h1>Loading...</h1>

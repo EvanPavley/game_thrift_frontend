@@ -6,7 +6,15 @@ import '../css/UserShow.css';
 function UserShowContainer(props) {
   const usersGames = () => {
     return props.user.games.map(g => {
-      return <GameCard key={g.id} game={g} handleCart={props.addToCart} />;
+      return (
+        <GameCard
+          key={g.id}
+          cart={props.cart}
+          game={g}
+          handleCart={props.addToCart}
+          isCart={props.isCart}
+        />
+      );
     });
   };
   return (

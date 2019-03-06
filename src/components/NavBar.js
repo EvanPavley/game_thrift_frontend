@@ -15,12 +15,6 @@ class NavBar extends Component {
           {' '}
           Post Game{' '}
         </NavLink>
-        {/*
-        <NavLink className='nav-item' id='homepage' to='/HomePage'>
-          {' '}
-          GAME THRIFT{' '}
-        </NavLink>
-        */}
         <input
           className='image'
           type='image'
