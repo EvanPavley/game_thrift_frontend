@@ -32,7 +32,10 @@ class App extends Component {
       description: '',
       release_date: '',
       ogUsers: [],
-      users: []
+      users: [],
+      username: '',
+      email: '',
+      password: ''
     };
   }
 
@@ -136,6 +139,35 @@ class App extends Component {
     });
   };
 
+  handleLoginChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleLoginSubmit = e => {
+    console.log(this.state);
+    e.preventDefault();
+    fetch('http://localhost:3000/api/v1/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password,
+        email: this.state.email
+      })
+    }) // end of fetch
+      .then(r => r.json())
+      .then(user =>
+        this.setState({
+          users: [...this.state.users, user]
+        })
+      );
+  };
+
   handleAddGameSubmit = e => {
     e.preventDefault();
 
@@ -192,7 +224,18 @@ class App extends Component {
             />
           )}
         />
-        <Route path='/Login' render={() => <Login />} />
+        <Route
+          path='/Login'
+          render={() => (
+            <Login
+              username={this.state.username}
+              password={this.state.password}
+              email={this.state.email}
+              handleChange={this.handleLoginChange}
+              handleSubmit={this.handleLoginSubmit}
+            />
+          )}
+        />
         <Route
           path='/SearchPage'
           render={() => (
