@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 class GameCard extends Component {
   handleClick = () => {
+    console.log(this.props.game);
     this.props.handleCart(this.props.game.id);
   };
 
@@ -53,12 +54,12 @@ class GameCard extends Component {
               <div>
                 <button
                   onClick={
-                    this.props.cart.includes(this.props.game)
+                    this.props.cart.find(g => g.id === this.props.game.id)
                       ? null
                       : this.handleClick
                   }
                 >
-                  {this.props.cart.includes(this.props.game)
+                  {this.props.cart.find(g => g.id === this.props.game.id)
                     ? 'in your cart'
                     : 'add to cart'}
                 </button>

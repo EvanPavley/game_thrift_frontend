@@ -169,11 +169,6 @@ class App extends Component {
   };
 
   handleLoginChange = e => {
-    // if (e.target.name === 'username') {
-    //   if (this.checkExistingUser(e.target.value)) {
-    //     alert('That username is taken, please choose another.');
-    //   }
-    // }
     this.setState({
       [e.target.name]: e.target.value
     });
