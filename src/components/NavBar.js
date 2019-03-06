@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import '../css/NavBar.css';
+import logo from '../images/gamethirftLOGO.png'
 
 class NavBar extends Component {
   render() {
@@ -14,10 +15,13 @@ class NavBar extends Component {
           {' '}
           Sell Game{' '}
         </NavLink>
+        {/*
         <NavLink className='nav-item' id='homepage' to='/HomePage'>
           {' '}
           GAME THRIFT{' '}
         </NavLink>
+        */}
+        <input className='image' type="image" src={logo} onClick={() => this.props.history.push('/HomePage')}/>
         <NavLink className='nav-item' id='cart' to='/Cart'>
           {' '}
           Cart ({this.props.cartCount})
@@ -31,4 +35,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

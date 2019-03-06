@@ -13,15 +13,15 @@ class NewGameForm extends Component {
 
   render() {
     return (
-      <div className='ngf-container'>
+      <div className='container ngf-container'>
         {!this.props.loggedInUser ? (
           <h1>Please log in to post a game!</h1>
         ) : (
           <div className='new-game'>
-            <h1>NEW GAME FORM</h1>
-            <form onSubmit={e => this.props.handleSubmit(e)}>
+            <h1 id='ngf-title'>SELL A GAME</h1>
+            <form className='ngf-form'onSubmit={e => this.props.handleSubmit(e)}>
               <br />
-              <label>Name:</label>
+              <label>Name:</label><br/>
               <input
                 name='name'
                 value={this.props.name}
@@ -30,7 +30,7 @@ class NewGameForm extends Component {
                 required
               />
               <br />
-              <label>Price:</label>
+              <label>Price:</label><br/>
               <input
                 name='price'
                 value={this.props.price}
@@ -39,7 +39,7 @@ class NewGameForm extends Component {
                 required
               />
               <br />
-              <label>Image:</label>
+              <label>Image:</label><br/>
               <input
                 name='image'
                 value={this.props.image}
@@ -48,7 +48,7 @@ class NewGameForm extends Component {
                 required
               />
               <br />
-              <label>Console:</label>
+              <label>Console:</label><br/>
               <input
                 name='console'
                 value={this.props.console}
@@ -57,9 +57,10 @@ class NewGameForm extends Component {
                 required
               />
               <br />
-              <label>Description:</label>
-              <input
-                type='textarea'
+              <label>Description:</label><br/>
+              <textarea
+                id='des'
+                type='text'
                 name='description'
                 value={this.props.description}
                 onChange={this.props.handleChange}
@@ -67,8 +68,9 @@ class NewGameForm extends Component {
                 required
               />
               <br />
-              <label>Release Date:</label>
+              <label>Release Date:</label><br/>
               <input
+                id='date'
                 type='date'
                 name='release_date'
                 value={this.props.release_date}
@@ -78,7 +80,9 @@ class NewGameForm extends Component {
                 required
               />
               <br />
-              <input type='submit' value='submit' className='ngf-submit' />
+              <div className='button-holder'>
+                <input type='submit' value='submit' className='ngf-submit' />
+              </div>
             </form>
           </div>
         )}

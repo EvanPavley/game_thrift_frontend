@@ -40,7 +40,7 @@ class Cart extends Component {
         {this.props.cart.length !== 0 ? (
           <div className='col'>{this.getGames()}</div>
         ) : (
-          <h1 className='col'>Thank you for your purchase!</h1>
+          <h1 className='col thank-you'>Thank you for your purchase!</h1>
         )}
         <div className='col col-lg-3 cart-container'>
           <h2>Summary</h2>
@@ -54,16 +54,18 @@ class Cart extends Component {
               {this.displayPrices()}
               <p id='final-price'>${this.props.total}</p>
             </div>
-            <button class='cart-button' onClick={this.props.checkout}>
-              Empty Cart
-            </button>
-            <button
-              class='cart-button'
-              id='checkout-btn'
-              onClick={this.props.checkout}
-            >
-              Checkout
-            </button>
+            <div className='container button-holder'>
+              <button class='cart-button' onClick={this.props.checkout}>
+                Empty Cart
+              </button>
+              <button
+                class='cart-button'
+                id='checkout-btn'
+                onClick={this.props.checkout}
+              >
+                Checkout
+              </button>
+            </div>
           </div>
         </div>
       </div>

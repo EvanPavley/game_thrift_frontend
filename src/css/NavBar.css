@@ -1,7 +1,7 @@
 .nav-container{
   margin-left: 15px;
   margin-right: 15px;
-  padding: 40px 0;
+  padding: 20px 0;
   display: flex;
   justify-content: space-around;
   border-bottom: 7px solid #393b78;
@@ -15,10 +15,12 @@
   border: 5px solid #ff5dc0;
   background-color: #722a56;
   padding: 30px;
+  margin-top: 30px;
   padding-right: 50px;
   padding-left: 50px;
+  height: 110px;
   border-radius: 70px;
-  font-size: 25px;
+  font-size: 29px;
   text-decoration: none;
 }
 .nav-item:visited {
@@ -34,6 +36,11 @@
   border: 5px solid #722a56;
   background-color: #ff5dc0;
   text-decoration: none;
+}
+
+.image{
+  height: 20%;
+  width: 20%;
 }
 
 #ngf{
