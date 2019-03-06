@@ -39,8 +39,20 @@
 }
 
 .image{
+  transition: 0.3s;
+  outline: none;
+  border-radius: 9px;
+  border: 7px solid #4b52ff;
   height: 20%;
   width: 20%;
+}
+
+.image:hover{
+  border-color: #ff5dc0;
+  animation-name: color_change;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #ngf{
