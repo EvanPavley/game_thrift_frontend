@@ -29,9 +29,15 @@ class GameShowCard extends Component {
             <h2>{this.props.game.name}</h2>
             <div className='description-sub-container'>
               <p>Console: {this.props.game.console}</p>
-              <p>Date Posted: {postedDate}</p>
               <p>Date Released: {releaseDate}</p>
-              <p>Description: {this.props.game.description}</p>
+              <hr />
+              <p>Posted: {postedDate}</p>
+              <p>Seller: {this.props.game.seller.email}</p>
+              <hr />
+              <p>
+                Description: <br />
+                {this.props.game.description}
+              </p>
             </div>
           </div>
           <div className='price-container'>

@@ -17,8 +17,6 @@ class GameCard extends Component {
       .unix(this.props.game.posted_date)
       .format('MMMM Do YYYY');
 
-    console.log(moment().unix());
-
     return (
       <div>
         <div
@@ -34,8 +32,10 @@ class GameCard extends Component {
             <h2>{this.props.game.name}</h2>
             <div className='description-sub-container'>
               <p>Console: {this.props.game.console}</p>
-              <p>Date Posted: {postedDate}</p>
-              <p>Date Released: {releaseDate}</p>
+              <p>Released: {releaseDate}</p>
+              <hr />
+              <p>Posted: {postedDate}</p>
+              <p>Seller: {this.props.game.seller.email}</p>
             </div>
           </div>
           <div className='price-container'>
