@@ -10,7 +10,7 @@ function UserShowContainer(props) {
     });
   };
   return (
-    <div>
+    <div className='container'>
       <div className='user-show'>
         <h1>{props.user.username}</h1>
         <button onClick={() => props.history.goBack()}>back</button>

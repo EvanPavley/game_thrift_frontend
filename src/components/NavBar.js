@@ -14,9 +14,9 @@ class NavBar extends Component {
           {' '}
           Sell Game{' '}
         </NavLink>
-        <NavLink className='nav-item' to='/HomePage'>
+        <NavLink className='nav-item' id='homepage' to='/HomePage'>
           {' '}
-          HomePage{' '}
+          GAME THRIFT{' '}
         </NavLink>
         <NavLink className='nav-item' id='cart' to='/Cart'>
           {' '}

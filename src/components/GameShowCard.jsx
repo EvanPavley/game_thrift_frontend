@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/GameCard.css';
+import '../css/GameShowCard.css';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 
@@ -19,35 +19,35 @@ class GameShowCard extends Component {
 
     return (
       <div>
-        <div className='game-card'>
-          <div className='image-container'>
-            <img className='game-card-image' src={this.props.game.image} />
+        <div className='game-show-card'>
+          <div className='image-show-container'>
+            <img className='game-show-card-image' src={this.props.game.image} />
           </div>
-          <div className='description-container'>
+          <div className='description-show-container'>
             <h2>{this.props.game.name}</h2>
-            <div className='description-sub-container'>
-              <p>Console: {this.props.game.console}</p>
-              <p>Date Released: {releaseDate}</p>
-              <hr />
-              <p>Posted: {postedDate}</p>
+            <hr />
+            <div className='description-show-sub-container'>
+              <p><b>Posted:</b> {postedDate}</p>
               {this.props.game.seller ? (
-                <p>Seller: {this.props.game.seller.username}</p>
+                <p><b>Seller:</b> {this.props.game.seller.username}</p>
               ) : null}
               <hr />
+              <p><b>Console:</b> {this.props.game.console}</p>
+              <p><b>Date Released:</b> {releaseDate}</p>
               <p>
-                Description: <br />
+                <b>Description:</b> <br />
                 {this.props.game.description}
               </p>
             </div>
           </div>
-          <div className='price-container'>
+          <div className='price-show-container'>
             <p>Price: ${this.props.game.price}</p>
             {this.props.isCart === true ? (
               <button onClick={this.handleClick}>remove</button>
             ) : (
               <button onClick={this.handleClick}>add to cart</button>
             )}
-            <button onClick={() => this.props.history.goBack()}>back</button>
+            <button id="back-show"onClick={() => this.props.history.goBack()}>back</button>
           </div>
         </div>
       </div>

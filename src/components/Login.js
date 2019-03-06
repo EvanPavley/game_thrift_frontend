@@ -36,39 +36,43 @@ class Login extends Component {
 
   render() {
     return (
-      <div className='login-container'>
-        <h1>LOGIN</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>Username:</label>
-          <input
-            name='username'
-            value={this.state.username}
-            onChange={this.handleChange}
-            className='login-input'
-            required
-          />
-          <br />
-          <label>Email:</label>
-          <input
-            name='email'
-            value={this.state.email}
-            onChange={this.handleChange}
-            className='login-input'
-            required
-          />
-          <br />
-          <label>Password:</label>
-          <input
-            name='password'
-            value={this.state.password}
-            onChange={this.handleChange}
-            type='password'
-            className='login-input'
-            required
-          />
-          <br />
-          <input type='submit' value='login' className='login-submit' />
-        </form>
+      <div className='container login-container'>
+        <div>
+          <h1 id='login-title'>LOGIN</h1>
+          <form className='login-form' onSubmit={this.handleSubmit}>
+            <label>Username:</label><br/>
+            <input
+              name='username'
+              value={this.state.username}
+              onChange={this.handleChange}
+              className='login-input'
+              required
+            />
+            <br />
+            <label>Email:</label><br/>
+            <input
+              name='email'
+              value={this.state.email}
+              onChange={this.handleChange}
+              className='login-input'
+              required
+            />
+            <br />
+            <label>Password:</label><br/>
+            <input
+              name='password'
+              value={this.state.password}
+              onChange={this.handleChange}
+              type='password'
+              className='login-input'
+              required
+            />
+            <br />
+            <div className='button-holder'>
+              <input type='submit' value='login' className='login-submit' />
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GameCard from './GameCard';
+import '../css/HomePage.css';
 
 class HomePage extends Component {
   getGames = () => {
@@ -17,8 +18,8 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Featured Items</h1>
+      <div className="container homepage-container">
+        <h1 className="home-page-title">Feature Games</h1>
         <div>
           {this.props.games.length !== 0 ? (
             this.getGames()
