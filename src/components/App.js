@@ -32,7 +32,11 @@ class App extends Component {
       description: '',
       release_date: '',
       ogUsers: [],
-      users: []
+      users: [],
+      username: '',
+      email: '',
+      password: '',
+      loggedInUser: null
     };
   }
 
@@ -84,11 +88,15 @@ class App extends Component {
   };
 
   checkout = () => {
-    this.setState({
-      cart: [],
-      total: 0,
-      cartCount: 0
-    });
+    if (this.state.loggedInUser) {
+      this.setState({
+        cart: [],
+        total: 0,
+        cartCount: 0
+      });
+    } else {
+      alert('Please log in to checkout');
+    }
   };
 
   handleSearch = e => {
@@ -136,6 +144,49 @@ class App extends Component {
     });
   };
 
+  handleLoginChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  welcomeUser = () => {
+    if (this.state.users.includes(this.state.loggedInUser)) {
+      alert(`Welcome back, ${this.state.loggedInUser.username}`);
+    } else {
+      alert(`Thanks for signing up, ${this.state.loggedInUser.username}`);
+    }
+  };
+
+  handleLoginSubmit = e => {
+    console.log(this.state);
+    e.preventDefault();
+    fetch('http://localhost:3000/api/v1/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password,
+        email: this.state.email
+      })
+    }) // end of fetch
+      .then(r => r.json())
+      .then(user =>
+        this.setState(
+          {
+            users: [...this.state.users, user],
+            loggedInUser: user
+          },
+          this.welcomeUser
+        )
+      );
+
+    this.props.history.push('/HomePage');
+  };
+
   handleAddGameSubmit = e => {
     e.preventDefault();
 
@@ -153,13 +204,19 @@ class App extends Component {
         posted_date: moment().unix(),
         description: this.state.description,
         release_date: new Date(this.state.release_date).getTime() / 1000,
-        seller_id: 11
+        seller_id: this.state.loggedInUser.id
       })
     })
       .then(r => r.json())
       .then(game =>
         this.setState({
-          games: [...this.state.games, game]
+          games: [...this.state.games, game],
+          name: '',
+          price: '',
+          image: '',
+          console: '',
+          description: '',
+          release_date: ''
         })
       );
 
@@ -189,10 +246,23 @@ class App extends Component {
               isCart={true}
               total={this.state.total}
               checkout={this.checkout}
+              loggedInUser={this.state.loggedInUser}
             />
           )}
         />
-        <Route path='/Login' render={() => <Login />} />
+        <Route
+          path='/Login'
+          render={() => (
+            <Login
+              username={this.state.username}
+              password={this.state.password}
+              email={this.state.email}
+              handleChange={this.handleLoginChange}
+              handleSubmit={this.handleLoginSubmit}
+              loggedInUser={this.state.loggedInUser}
+            />
+          )}
+        />
         <Route
           path='/SearchPage'
           render={() => (
@@ -218,6 +288,7 @@ class App extends Component {
               console={this.state.console}
               description={this.state.description}
               release_date={this.state.release_date}
+              loggedInUser={this.state.loggedInUser}
             />
           )}
         />
