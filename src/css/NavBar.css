@@ -1,23 +1,64 @@
 .nav-container{
-  padding: 50px 0;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 40px 0;
   display: flex;
   justify-content: space-around;
-  border-bottom: 2px dashed black;
+  border-bottom: 7px solid #393b78;
+  border-right: 7px solid #393b78;
+  border-left: 7px solid #393b78;
+  background-color: #171832;
+  border-radius: 0px 0px 50px 50px;
 }
 
-.main-nav-item{
+.nav-item{
+  border: 5px solid #ff5dc0;
+  background-color: #722a56;
+  padding: 30px;
+  padding-right: 50px;
+  padding-left: 50px;
+  border-radius: 70px;
   font-size: 25px;
   text-decoration: none;
 }
-.main-nav-item:visited {
-  color: black;
+.nav-item:visited {
+  color: white;
   text-decoration: none;
 }
-.main-nav-item:link {
-  color: black;
+.nav-item:link {
+  color: white;
   text-decoration: none;
 }
-.main-nav-item:hover {
-  color: cyan;
+.nav-item:hover {
+  color: black;
+  border: 5px solid #722a56;
+  background-color: #ff5dc0;
   text-decoration: none;
+}
+
+#ngf{
+  border: 5px solid #4b52ff;
+  background-color: #212463;
+}
+#ngf:hover {
+  border: 5px solid #212463;
+  background-color: #4b52ff;
+}
+
+#cart{
+  border: 5px solid #18e3d3;
+  background-color: #08544e;
+}
+#cart:hover {
+  border: 5px solid #08544e;
+  background-color: #18e3d3;
+}
+
+#search{
+  border: 5px solid #ffff00;
+  background-color: #737219;
+}
+#search:hover {
+  border: 5px solid #737219;
+  background-color: #ffff00;
 }

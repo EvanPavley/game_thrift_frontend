@@ -32,6 +32,7 @@ class GameCard extends Component {
           </div>
           <div className='description-container'>
             <h2>{this.props.game.name}</h2>
+            <hr/>
             <div className='description-sub-container'>
               <p>Console: {this.props.game.console}</p>
               <p>Date Posted: {postedDate}</p>
@@ -43,7 +44,10 @@ class GameCard extends Component {
             {this.props.isCart === true ? (
               <button onClick={this.handleClick}>remove</button>
             ) : (
-              <button onClick={this.handleClick}>add to cart</button>
+              <div>
+                <button onClick={this.handleClick}>add to cart</button>
+                <button id='wishlist'>wishlist</button>
+              </div>
             )}
           </div>
         </div>

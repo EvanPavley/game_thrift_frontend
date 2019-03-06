@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const url = 'http://192.168.3.58:3000/api/v1/games';
+    const url = 'http://localhost:3000/api/v1/games';
     fetch(url)
       .then(resp => resp.json())
       .then(data =>

@@ -7,25 +7,25 @@ class NavBar extends Component {
     // console.log('nav', this.props);
     return (
       <div className='nav-container'>
-        <NavLink className='main-nav-item' to='/Login'>
+        <NavLink className='nav-item' to='/Login'>
           {' '}
           Login{' '}
         </NavLink>
-        <NavLink className='main-nav-item' to='/NewGameForm'>
+        <NavLink className='nav-item' id='ngf'to='/NewGameForm'>
           {' '}
-          NewGameForm{' '}
+          Sell Game{' '}
         </NavLink>
-        <NavLink className='main-nav-item' to='/HomePage'>
+        <NavLink className='nav-item' to='/HomePage'>
           {' '}
           HomePage{' '}
         </NavLink>
-        <NavLink className='main-nav-item' to='/Cart'>
+        <NavLink className='nav-item' id='cart' to='/Cart'>
           {' '}
           Cart ({this.props.cartCount})
         </NavLink>
-        <NavLink className='main-nav-item' to='/SearchPage'>
+        <NavLink className='nav-item' id='search' to='/SearchPage'>
           {' '}
-          SearchPage{' '}
+          Search{' '}
         </NavLink>
       </div>
     );
