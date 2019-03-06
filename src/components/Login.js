@@ -9,12 +9,16 @@ class Login extends Component {
   };
 
   handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    this.setState(
+      {
+        [e.target.name]: e.target.value
+      },
+      () => console.log(this.state)
+    );
   };
 
   handleSubmit = e => {
+    console.log(this.state);
     e.preventDefault();
     fetch('http://localhost:3000/api/v1/users', {
       method: 'POST',
