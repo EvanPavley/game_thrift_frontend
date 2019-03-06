@@ -13,6 +13,7 @@
 .login-input{
   font-size: 25px;
   margin: 20px;
+  border: 5px solid #4b52ff;
 }
 .login-submit{
   -webkit-appearance: none;
@@ -41,5 +42,5 @@
 }
 
 #login-title{
-  font-size: 40px
+  font-size: 70px
 }
