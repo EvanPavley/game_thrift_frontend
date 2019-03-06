@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link, NavLink, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import '../css/NavBar.css';
-import logo from '../images/gamethirftLOGO.png'
+import logo from '../images/gamethirftLOGO.png';
 
 class NavBar extends Component {
   render() {
@@ -13,7 +13,7 @@ class NavBar extends Component {
         </NavLink>
         <NavLink className='nav-item' id='ngf' to='/NewGameForm'>
           {' '}
-          Sell Game{' '}
+          Post Game{' '}
         </NavLink>
         {/*
         <NavLink className='nav-item' id='homepage' to='/HomePage'>
@@ -21,14 +21,19 @@ class NavBar extends Component {
           GAME THRIFT{' '}
         </NavLink>
         */}
-        <input className='image' type="image" src={logo} onClick={() => this.props.history.push('/HomePage')}/>
+        <input
+          className='image'
+          type='image'
+          src={logo}
+          onClick={() => this.props.history.push('/HomePage')}
+        />
         <NavLink className='nav-item' id='cart' to='/Cart'>
           {' '}
           Cart ({this.props.cartCount})
         </NavLink>
         <NavLink className='nav-item' id='search' to='/SearchPage'>
           {' '}
-          Search{' '}
+          Browse{' '}
         </NavLink>
       </div>
     );
