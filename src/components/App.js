@@ -50,9 +50,10 @@ class App extends Component {
   }
 
   featuredGames = () => {
-    return featuredGamesNames.map(name => {
+    let games = featuredGamesNames.map(name => {
       return this.state.games.find(g => g.name === name);
     });
+    return games.filter(g => g !== undefined);
   };
 
   componentDidMount() {
@@ -87,7 +88,7 @@ class App extends Component {
   }
 
   addToCart = gameid => {
-    let foundGame = this.state.ogGames.find(game => game.id === gameid);
+    let foundGame = this.state.games.find(game => game.id === gameid);
     let price = foundGame.price;
     this.setState({
       cart: [foundGame, ...this.state.cart],
@@ -97,7 +98,7 @@ class App extends Component {
   };
 
   removeFromCart = gameid => {
-    let foundGame = this.state.ogGames.find(game => game.id === gameid);
+    let foundGame = this.state.games.find(game => game.id === gameid);
     let price = foundGame.price;
     let updatedCart = this.state.cart.filter(game => {
       if (game !== foundGame) {
@@ -113,11 +114,21 @@ class App extends Component {
 
   checkout = () => {
     if (this.state.loggedInUser) {
-      this.setState({
-        cart: [],
-        total: 0,
-        cartCount: 0
-      });
+      let purchasedGames = this.state.games.filter(
+        g => this.state.cart.includes(g) === false
+      );
+      this.setState(
+        {
+          cart: [],
+          total: 0,
+          cartCount: 0,
+          games: purchasedGames
+        },
+        () =>
+          this.setState({
+            featuredGames: this.featuredGames()
+          })
+      );
     } else {
       alert('Please log in to checkout');
     }
