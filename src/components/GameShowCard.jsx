@@ -9,6 +9,7 @@ class GameShowCard extends Component {
   };
 
   render() {
+    console.log(this.props);
     let releaseDate = moment
       .unix(this.props.game.release_date)
       .format('MMMM Do YYYY');
