@@ -4,15 +4,15 @@ Created by Nison Malayev and Evan Pavley.
 
 ## Features
 
-<img alt="FeaturedGames" src="src/images/FGss.png" width="509px" height="250px">
+<img alt="FeaturedGames" src="src/images/FGss.png" width="409px" height="250px">
 
 We wanted gamethrift's UI to have the look and feel of a classic video game's select screen. The color palette was inspired by arcades and neon signs.
 
-<img alt="brows" src="src/images/bss.png" width="509px" height="250px">
+<img alt="brows" src="src/images/bss.png" width="409px" height="250px">
 
 Using the [igdb](https://www.igdb.com/discover) api we pulled images and descriptions from around 100 classic video games and used them to seed our database as user posts. We selected five of the most popular consoles from before the year 2000 to keep our categories short.
 
-<img alt="brows" src="src/images/gcss.png" width="509px" height="250px">
+<img alt="brows" src="src/images/gcss.png" width="409px" height="250px">
 
 Users are able to buy video games through adding them to their cart, the purchases are sustained in a join table in our database. Users and also sell video games through posting them.
 
