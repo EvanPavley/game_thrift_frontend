@@ -2,6 +2,8 @@
 A vintage video game e-commerce site for finding all the games you’ve been wanting to play since the 90’s.
 Created by Nison Malayev and Evan Pavley.
 
+[Demo](https://www.youtube.com/watch?v=jWwf6UuNwu0)
+
 ## Features
 
 <img alt="FeaturedGames" src="src/images/FGss.png" width="409px" height="250px">
