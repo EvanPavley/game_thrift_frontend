@@ -1,8 +1,9 @@
 <img alt="gamethrift logo" src="src/images/gamethirftLOGO.png" width="512px" height="200px">
+
+[Demo Video](https://www.youtube.com/watch?v=jWwf6UuNwu0)
+
 A vintage video game e-commerce site for finding all the games you’ve been wanting to play since the 90’s.
 Created by Nison Malayev and Evan Pavley.
-
-[Demo](https://www.youtube.com/watch?v=jWwf6UuNwu0)
 
 ## Features
 
