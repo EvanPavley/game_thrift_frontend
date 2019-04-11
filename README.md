@@ -29,4 +29,4 @@ Users are able to buy video games through adding them to their cart, the purchas
 
 Evan Pavley designed the logo and repeating pattern background.
 
-[Backend Repo](https://github.com/EvanPavley/game_thrift_backend)
+[Backend Repo](https://github.com/nmala/game_thrift_backend)
